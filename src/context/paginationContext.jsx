@@ -4,8 +4,8 @@ import axios from 'axios';
 
 export const PaginationContext = createContext();
 
-export function PaginationProvider({ children }){
-  const [filters, setFilters] = useState({ page: 1, limit: 3, maxButtons: 2, loanStatus: '0', loanType: '0', paidStatus: '0', name: '' })
+export function PaginationProvider({ children, endpoint, filtersValue }){
+  const [filters, setFilters] = useState(filtersValue)
   const [data, setData] = useState(null);
   
   useEffect(() => {
@@ -16,7 +16,7 @@ export function PaginationProvider({ children }){
       }
     })
 
-    axiosInstance.get('/loans', { params: filters })
+    axiosInstance.get(endpoint, { params: filters })
       .then((res) => {
         setData(res.data);
       })
