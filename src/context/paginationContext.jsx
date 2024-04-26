@@ -10,7 +10,7 @@ export function PaginationProvider({ children }){
   
   useEffect(() => {
     const axiosInstance = axios.create({
-      baseURL: 'http://localhost:3000/api/v1',
+      baseURL: import.meta.env.VITE_API_HOST,
       headers: {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MDQ3MjI1MDA1NGFjMmJmYzc1YjMwYiIsInJvbGUiOjEsImlhdCI6MTcxMzg5MTQ1NX0.Ed9x29_3BItDA1sxNBVpRRGVU_fkS5KyABOibEvAsW4'
       }
@@ -18,7 +18,6 @@ export function PaginationProvider({ children }){
 
     axiosInstance.get('/loans', { params: filters })
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {

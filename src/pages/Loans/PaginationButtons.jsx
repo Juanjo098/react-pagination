@@ -30,8 +30,8 @@ function PrevButtons({ currentPage, total, maxButtons, debounceChangePage }){
 
   return (
     <>
-    {currentPage !== 1 && <button onClick={() => debounceChangePage(1)}>Inicio</button>}
-    {currentPage !== 1 && <button onClick={() => debounceChangePage(currentPage - 1)}>-1</button>}
+    {currentPage !== 1 && <button onClick={() => debounceChangePage(1)}>&lt;&lt;</button>}
+    {currentPage !== 1 && <button onClick={() => debounceChangePage(currentPage - 1)}>&lt;</button>}
     {range.map((value) => {
     return (
       <button onClick={() => debounceChangePage(value)} key={value}>{value}</button>
@@ -53,8 +53,8 @@ function NextButtons({ currentPage, limit, total, maxButtons, debounceChangePage
             )
           })
         }
-        {(currentPage !== Math.round((total / limit)) && Math.round((total / limit))  !== 0) && <button onClick={() => debounceChangePage(currentPage + 1)}>+1</button>}
-        {(currentPage !== Math.round((total / limit)) && Math.round((total / limit))  !== 0) && <button onClick={() => debounceChangePage(Math.round((total / limit)))}>Fin</button>}
+        {(currentPage !== Math.round((total / limit)) && Math.round((total / limit))  !== 0) && <button onClick={() => debounceChangePage(currentPage + 1)}>&gt;</button>}
+        {(currentPage !== Math.round((total / limit)) && Math.round((total / limit))  !== 0) && <button onClick={() => debounceChangePage(Math.round((total / limit)))}>&gt;&gt;</button>}
     </>
   )
 }
